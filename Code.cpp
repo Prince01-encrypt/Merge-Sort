@@ -40,6 +40,7 @@ void merge(int* array,int begin, int mid, int end){
     int* right_array = new int[right_array_size];
     int left_array_index = 0, right_array_index = 0;
     int array_index = begin;
+    
     for(int i=0; i<left_array_size; i++){
         left_array[i] = array[begin];
         begin++;
@@ -49,27 +50,30 @@ void merge(int* array,int begin, int mid, int end){
         right_array[i] = array[mid];
         mid++;
     }
-while(left_array_index != left_array_size && right_array_index != right_array_size){
-    if(left_array[left_array_index] <= right_array[right_array_index]){
-        array[array_index] = left_array[left_array_index];
-        left_array_index++;
-        array_index++;
+    
+    while(left_array_index != left_array_size && right_array_index != right_array_size){
+        if(left_array[left_array_index] <= right_array[right_array_index]){
+            array[array_index] = left_array[left_array_index];
+            left_array_index++;
+            array_index++;  
+        }
+        else{
+            array[array_index] = right_array[right_array_index];
+            right_array_index++;
+            array_index++;
+        }
+
     }
-    else{
+    
+    while(right_array_index != right_array_size){
         array[array_index] = right_array[right_array_index];
         right_array_index++;
         array_index++;
     }
-
-}
-while(right_array_index != right_array_size){
-    array[array_index] = right_array[right_array_index];
-    right_array_index++;
-    array_index++;
-}
-while(left_array_index != left_array_size){
-    array[array_index] = left_array[left_array_index];
-    left_array_index++;
-    array_index++;
-}
+    
+    while(left_array_index != left_array_size){
+        array[array_index] = left_array[left_array_index];
+        left_array_index++;
+        array_index++;
+    }
 }
